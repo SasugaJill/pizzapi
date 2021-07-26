@@ -39,6 +39,7 @@ class Menu(object):
     def __init__(self, data={}, country=COUNTRY_USA):
         self.variants = data.get('Variants', {})
         self.menu_by_code = {}
+        self.pizza_toppings = {}
         self.root_categories = {}
         self.country = COUNTRY_USA
 
@@ -46,6 +47,7 @@ class Menu(object):
             self.products = self.parse_items(data['Products'])
             self.coupons = self.parse_items(data['Coupons'])
             self.preconfigured = self.parse_items(data['PreconfiguredProducts'])
+            self.pizza_toppings = self.parse_items(data['Toppings']['Pizza'])
             for key, value in data['Categorization'].items():
                 self.root_categories[key] = self.build_categories(value)
 
