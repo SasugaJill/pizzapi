@@ -35,13 +35,10 @@ class Order(object):
             'PriceOrderTime': '', 'AmountsBreakdown': {}
             }
 
-    # TODO: Implement item options
     # TODO: Add exception handling for KeyErrors
-    def add_item(self, code, qty=1, pizza_toppings=''):
+    def add_item(self, code, qty=1, options={}):
         item = self.menu.variants[code]
-        tags = item['Tags']
-        tags['Toppings'] = pizza_toppings
-        item.update(ID=1, isNew=True, Qty=qty, AutoRemove=False, Tags=tags)
+        item.update(ID=1, isNew=True, Qty=qty, AutoRemove=False, Options=options)
         self.data['Products'].append(item)
         return item
 
