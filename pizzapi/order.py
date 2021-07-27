@@ -125,7 +125,8 @@ class Order(object):
                     'CardType': card.card_type,
                     'Number': int(card.number),
                     'SecurityCode': int(card.cvv),
-                    'PostalCode': int(card.zip)
+                    'PostalCode': int(card.zip),
+                    'TipAmount': int(card.tip),
                 }
             ]
 

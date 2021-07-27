@@ -18,5 +18,10 @@ Changes from original lib:
 
    Ex: order.add_item('P12IPAZA', 1, 'J=1,N=1')
 
+ - Can add an integer tip when creating a payment object.
+   PaymentObject(<credit_card_num>, <exp_date>, <cvv>, <zipcode>, <tip>)
+
+   Ex: PaymentObject('1234567890123456', '0125', '123', '90210', '5')
+
  - Misc bug fixes
 

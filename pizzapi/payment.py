@@ -7,18 +7,20 @@ class PaymentObject(object):
     There's some sweet logic in here to make sure that the type of card
     you passed is valid. 
     """
-    def __init__(self, number='', expiration='', cvv='', zip=''):
+    def __init__(self, number='', expiration='', cvv='', zip='', tip=''):
         self.name = ''
         self.number = str(number).strip()
         self.card_type = self.find_type()
         self.expiration = str(expiration).strip()
         self.cvv = str(cvv).strip()
         self.zip = str(zip).strip()
+        self.tip = str(tip).strip()
 
     def validate(self):
         is_valid = self.number and self.card_type and self.expiration
         is_valid &= re.match(r'^[0-9]{3,4}$', self.cvv)
         is_valid &= re.match(r'^[0-9]{5}(?:-[0-9]{4})?$', self.zip)
+        is_valid &= re.match(r'^[0-9]{1,2}?$', self.tip)
         return is_valid
 
     def find_type(self):
